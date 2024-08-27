@@ -75,7 +75,7 @@ onMounted(() => {
                 <input placeholder="Confirm Password" type="password" id="confirmPassword" v-model="confirmPassword"
                     required>
             </div>
-            <button class="main-button" type="submit">Register</button>
+            <button :class="{'visible' : authStore.loading}" class="main-button" type="submit">Register</button>
             <Spin :active="authStore.loading" />
         </form>
     </FormBox>
@@ -87,6 +87,10 @@ onMounted(() => {
 .password-container {
     position: relative;
     display: inline-block;
+}
+
+.visible{
+    display: none;
 }
 
 .password-requirements {

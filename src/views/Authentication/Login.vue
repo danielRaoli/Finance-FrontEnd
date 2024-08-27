@@ -43,7 +43,7 @@ onMounted(() => {
                     <label for="password">Password</label>
                     <input placeholder="Password" type="password" id="password" v-model="password" required>
                 </div>
-                <button class="main-button" type="submit">Login</button>
+                <button :class="{'visible' : authStore.loading}" class="main-button" type="submit">Login</button>
                 <Spin :active="authStore.loading"/>
             </form>
             <RouterLink :to="'/register'">You don't have account ? Register</RouterLink>

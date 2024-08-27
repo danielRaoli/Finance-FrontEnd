@@ -25,7 +25,7 @@ const props = defineProps<{
     display: none;
 }
 
-.spin .is-active{
+.spin.is-active{
     display: block;
 }
 
