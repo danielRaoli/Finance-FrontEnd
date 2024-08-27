@@ -21,9 +21,9 @@ import BannerIcon from '@/components/icons/banner-icon.vue';
 .content{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 2rem;
 }
 
 .text{
@@ -42,7 +42,22 @@ import BannerIcon from '@/components/icons/banner-icon.vue';
 }
 
 svg{
-    width: 40%;
+    width: 50%;
 }
+
+@media screen and (max-width:900px) {
+    .content{
+        flex-direction: column-reverse;
+    }
+
+    svg{
+        width: 80%;
+    }
+
+    .text{
+        width: 100%;
+        text-align: center;
+    }
+} 
 
 </style>

@@ -10,9 +10,9 @@
 
 <style scoped>
 .box {
-    -webkit-box-shadow: -1px 10px 34px -19px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 10px 34px -19px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 10px 34px -19px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 3px 6px 0px rgba(130, 130, 130, 1);
+    -moz-box-shadow: 1px 3px 6px 0px rgba(130, 130, 130, 1);
+    box-shadow: 1px 3px 6px 0px rgba(130, 130, 130, 1);
     padding: 1rem;
     height: auto;
     border-radius: 8px;
@@ -28,6 +28,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (max-width:500px) {
+    .box{
+        width: 90%;
+    }
 }
 
 </style>

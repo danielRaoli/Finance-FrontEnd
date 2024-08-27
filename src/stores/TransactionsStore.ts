@@ -91,6 +91,40 @@ export const usetransactionStore = defineStore('transactions', {
       catch (error) {
         authStore.logout();
       }
+    },
+    async getTransactionGreaterThan(value : number){
+      if(value){
+        const response = await http.get(`Transaction/greaterthan?value=${value}`);
+
+        this.transactions = response.data.data;
+      }else{
+        const response = await http.get(`Transaction/greaterthan?value=0`);
+
+        this.transactions = response.data.data;
+      }
+
+    },
+    async getTransactionsByType(type : number | null){
+      if(type){
+        const response = await http.get(`Transaction/type?type=${type}`);
+
+        this.transactions = response.data.data;
+      }else{
+        await this.getTransactions();
+      }
+
+      
+
+    },
+    async filterTransactions(type : number | null, value : number){
+      if(type){
+        await this.getTransactions();
+        this.transactions = this.transactions.filter(t => t.type == type && t.value >= value)
+      }else{
+        await this.getTransactions();
+        this.transactions = this.transactions.filter(t => t.value >= value)
+      }
+     
     }
   }
 

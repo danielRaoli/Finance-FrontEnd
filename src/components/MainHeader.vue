@@ -6,7 +6,7 @@ import Iconlogo from './icons/iconlogo.vue';
 
 
 const authStore = useAuthStore();
-const router = useRouter();
+
 
 const isAutenticate = computed(() => authStore.token)
 
@@ -43,7 +43,7 @@ header {
   background-color: #fefefe;
   text-align: center;
 
-  box-shadow: -5px 5px 6px -4px rgba(130, 130, 130, 1);
+  box-shadow: 1px 3px 6px 0px rgba(130, 130, 130, 1);
 
 }
 

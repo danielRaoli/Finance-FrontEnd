@@ -5,6 +5,8 @@ import MainForm from '@/components/MainForm.vue';
 import TransactionItem from '@/components/TransactionItem.vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import { useRouter } from 'vue-router';
+import transactionstypes from '@/hooks/GetTransactionTypes';
+import Filters from '@/components/Filters.vue';
 
 
 
@@ -37,6 +39,8 @@ onMounted(async () => {
     <button @click="formActive = true" class="main-button">
       Add new Transaction
     </button>
+    <Filters/>
+
     <div class="modal" :class="{ 'is-active': formActive }">
       <div class="modal-background"></div>
       <div class="modal-card">

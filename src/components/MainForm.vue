@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { usetransactionStore } from '@/stores/TransactionsStore';
 import { ref, watch } from 'vue';
-import { ITransactionType } from '../interfaces/ITransactionType';
+import transactionstypes from '../hooks/GetTransactionTypes'
 
 
 
@@ -10,12 +10,7 @@ const description = ref('');
 const typeTransaction = ref<number>()
 const transactionStore = usetransactionStore();
 
-const types = Object.keys(ITransactionType)
-  .filter(key => isNaN(Number(key))) // Filtra as chaves numéricas
-  .map(key => ({
-    label: key,
-    value: ITransactionType[key as keyof typeof ITransactionType]
-  }));
+
 
 
 const emit = defineEmits(['submitFinish'])
@@ -63,7 +58,7 @@ function submitHandle() {
         <div class="form-field">
             <label for="type">transaction type</label>
             <select v-model="typeTransaction" id="type" required>
-                <option v-for="type in types" :key="type.value" :value="type.value">{{ type.label }}</option>
+                <option v-for="type in transactionstypes" :key="type.value" :value="type.value">{{ type.label }}</option>
             </select>
         </div>
         <button class="main-button" type="submit">{{ transactionStore.transactionId ? 'Edit' : 'Add' }}</button>
