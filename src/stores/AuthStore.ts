@@ -50,7 +50,7 @@ export const useAuthStore = defineStore('auth', {
                 }
 
             } catch (error) {
-                console.error('Erro no registro:', error);
+                toast.error("register fail try again")
             }
         },
         loadToken() {
