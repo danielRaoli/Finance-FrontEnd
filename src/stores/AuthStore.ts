@@ -6,16 +6,20 @@ import { toast } from "vue3-toastify";
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         token: null as string | null,
-        isAutenticated: false
+        isAutenticated: false,
+        loading: false
     }),
     actions: {
         async login(userName: string, password: string) {
+            this.loading = true;
+            
             try {
                 const response = await http.post('/login', {
                     userName: userName,
                     password: password
                 });
 
+               
 
                 if(response.data.code >= 200 && response.data.code < 300){
                     this.token = response.data.data;
@@ -26,23 +30,26 @@ export const useAuthStore = defineStore('auth', {
                 else{
                     toast.error(response.data.errors[0])
                 }
-
-                
-
                 
             } catch (error) {
                 toast.error('error in login, try again later')
             }
+
+            this.loading = false;
         },
         async register(email: string, userName: string, password: string, confirmPassword: string) {
+            this.loading = true;
+            
             try {
+               
+            
                const response = await http.post('/register', {
                     email: email,
                     userName: userName,
                     password: password,
                     confirmPassword: confirmPassword
                 });
-
+                
                 if(response.data.code >= 200 && response.data.code < 300){
                     toast.success(response.data.message)
                 }else{
@@ -52,6 +59,8 @@ export const useAuthStore = defineStore('auth', {
             } catch (error) {
                 toast.error("register fail try again")
             }
+
+            this.loading = false
         },
         loadToken() {
             const token = localStorage.getItem('token');

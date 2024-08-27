@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import FormBox from '@/components/FormBox.vue';
+import Spin from '@/components/Spin.vue';
 import { useAuthStore } from '@/stores/AuthStore';
 import { onMounted, ref,  } from 'vue'
 import { useRouter } from 'vue-router';
 const userName = ref('');
 const password = ref('');
+
+
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -41,6 +44,7 @@ onMounted(() => {
                     <input placeholder="Password" type="password" id="password" v-model="password" required>
                 </div>
                 <button class="main-button" type="submit">Login</button>
+                <Spin :active="authStore.loading"/>
             </form>
             <RouterLink :to="'/register'">You don't have account ? Register</RouterLink>
     </FormBox>
