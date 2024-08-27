@@ -36,12 +36,19 @@ export const useAuthStore = defineStore('auth', {
         },
         async register(email: string, userName: string, password: string, confirmPassword: string) {
             try {
-                await http.post('/register', {
+               const response = await http.post('/register', {
                     email: email,
                     userName: userName,
                     password: password,
                     confirmPassword: confirmPassword
                 });
+
+                if(response.data.code >= 200 && response.data.code < 300){
+                    toast.success(response.data.message)
+                }else{
+                    toast.error("register fail try again")
+                }
+
             } catch (error) {
                 console.error('Erro no registro:', error);
             }

@@ -74,5 +74,11 @@ span {
     font-size: 1.25rem;
 }
 
+@media screen and (max-width:800px) {
+    li{
+        grid-template-columns: none;
+        height: auto;
+    }
+}
 
 </style>
